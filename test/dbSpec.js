@@ -48,17 +48,7 @@ define(["db", "linq2indexeddb", "chai", "underscore", "stacktrace"], function (d
             _db.linq.from("store").insert(refObj, "Key")
             .done(function () {
                 console.log("Added object successfully");
-                _db.linq.from("store").get("Key")
-                .done(function (gotObj) {
-                    console.log("Got object", gotObj);
-                    if (!gotObj) {
-                        return fail(done, "The result is null/undefined");
-                    }
-                    if (gotObj.key !== refObj.key) {
-                        return fail("The loaded object doesn't equal the original one", done);
-                    }
-                })
-                .fail(bindFail(done, "Getting object failed"));
+                done();
             })
             .fail(bindFail(done, "Inserting object failed"));
         });

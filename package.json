@@ -1,0 +1,9 @@
+{
+	"name": "test-linq2indexeddb",
+	"description": "Test Linq2IndexedDB",
+	"dependencies": {
+	},
+	"devDependencies": {
+		"chai": "*"
+	}
+}

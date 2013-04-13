@@ -1,9 +1,10 @@
 {
-	"name": "test-linq2indexeddb",
-	"description": "Test Linq2IndexedDB",
-	"dependencies": {
-	},
-	"devDependencies": {
-		"chai": "*"
-	}
+    "name": "test-linq2indexeddb",
+    "description": "Test Linq2IndexedDB",
+    "dependencies": {
+     "underscore": "*"
+     },
+     "devDependencies": {
+        "chai": "*"
+    }
 }

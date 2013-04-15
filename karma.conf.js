@@ -16,7 +16,6 @@ files = [
   {pattern: 'lib/*.js', included: false},
   {pattern: 'node_modules/*/*.js', included: false},
   {pattern: 'test/*.js', included: false}
-
 ];
 
 
@@ -60,7 +59,7 @@ autoWatch = true;
 // - Safari (only Mac)
 // - PhantomJS
 // - IE (only Windows)
-browsers = ['Chrome'];
+browsers = ['Chrome', 'PhantomJS'];
 
 
 // If browser does not capture in given timeout [ms], kill it

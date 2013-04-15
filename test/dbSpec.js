@@ -8,6 +8,7 @@ define(["db", "linq2indexeddb", "chai", "underscore", "stacktrace"], function (d
         var _db;
 
         function fail(done, reason, err) {
+            console.log("err:", err);
             if (typeof reason === "string") {
                 reason = new Error(reason);
             }
@@ -32,9 +33,14 @@ define(["db", "linq2indexeddb", "chai", "underscore", "stacktrace"], function (d
         }
 
         beforeEach(function (done) {
+            // Linq2IndexedDB's web worker needs this URL
+            linq2indexeddb.prototype.utilities.linq2indexedDBWorkerFileLocation = '/base/lib/Linq2IndexedDb.js'
+
             _db = linq2indexeddb("test", null, true);
+            console.log("Deleting database");
             _db.deleteDatabase()
             .done(function () {
+                console.log("Initializing database");
                 _db.initialize()
                 .done(done)
                 .fail(bindFail(done, "Initializing database failed"));

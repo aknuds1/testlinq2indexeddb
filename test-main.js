@@ -8,6 +8,7 @@ requirejs.config({
 
     paths: {
         'chai': '../node_modules/chai/chai',
+        indexeddb: '../lib/IndexedDBShim',
         'linq2indexeddb': '../lib/Linq2IndexedDB',
         'jquery': '../lib/jquery-1.9.1',
         'underscore': '../node_modules/underscore/underscore',
@@ -15,8 +16,11 @@ requirejs.config({
     },
 
     shim: {
+        indexeddb: {
+            exports: 'idbModules'
+        },
         'linq2indexeddb': {
-            deps: ['jquery'],
+            deps: ['jquery', "indexeddb"],
             exports: 'linq2indexedDB'
         },
         underscore: {

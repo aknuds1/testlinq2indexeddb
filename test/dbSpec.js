@@ -34,9 +34,10 @@ define(["db", "linq2indexeddb", "chai", "underscore", "stacktrace"], function (d
 
         beforeEach(function (done) {
             // Linq2IndexedDB's web worker needs this URL
-            linq2indexeddb.prototype.utilities.linq2indexedDBWorkerFileLocation = '/base/lib/Linq2IndexedDb.js'
+            linq2indexeddb.prototype.utilities.linq2indexedDBWorkerFileLocation = '/base/lib/Linq2IndexedDB.js'
 
-            _db = linq2indexeddb("test", null, true);
+            _db = new db.Database("test");
+            
             console.log("Deleting database");
             _db.deleteDatabase()
             .done(function () {
@@ -51,12 +52,11 @@ define(["db", "linq2indexeddb", "chai", "underscore", "stacktrace"], function (d
         it("can add objects", function (done) {
             console.log("Starting test");
             var refObj = {"key": "value"};
-            _db.linq.from("store").insert(refObj, "Key")
+            _db.insert(refObj)
             .done(function () {
-                console.log("Added object successfully");
                 done();
             })
-            .fail(bindFail(done, "Inserting object failed"));
+            .fail(bindFail(done, "Database insertion failed"));
         });
     });
 });
